@@ -15,15 +15,25 @@ class Program
                                                                 "Kyiv: I love programming on Java",
                                                                 "Kherson: I love programming on C#",
                                                                 "Frankivs: I'm so strange, I write a code in a notebook and programming on C++",
-                                                                "Kharkiv: I'm a freak. I love tomato juice and programming on D",}));
+                                                                "Kharkiv: I'm a freak. I love tomato juice and programming on C",}));
+        Console.WriteLine("Exercise 5: " + Ex5('C', new string[] { "C++ or C",
+                                                                "C or C++",
+                                                                "C# or C"}));
         Console.WriteLine("Exercise 16: " + String.Join(", ", Ex16(new int[] { -1, 2, -3, 4 })));
         Console.WriteLine("Exercise 17: " + String.Join(", ", Ex17(new int[] { -18, -15, -2, -1, 0, 1, 4, 17, 1 })));
         Console.WriteLine("Exercise 18: " + String.Join(", ", Ex18(new int[] { -18, -15, -2, -1, 0, 1, 4, 17, 1 })));
+        Console.WriteLine("Exercise 19: " + String.Join(", ", Ex19(1 , new int[] { -181, -15, -2, -1, 0, 1, 4, 171, 1 })));
         Console.WriteLine("Exercise 32: " + String.Join(", ", Ex32(new string[] { "abc", "def", "gh" })));
         Console.WriteLine("Exercise 33: " + String.Join(", ", Ex33(new int[] { -18, -1, 0, 1, 4, 17, 1 })));
         Console.WriteLine("Exercise 34: " + String.Join(", ", Ex34(new int[] { 18, 1, 0, 1, 4, 17, 1 })));
+        Console.WriteLine("Exercise 36: " + String.Join(", ", Ex36(new string[] { "Once meeted persons of Frankivsk, Kyiv, Kherson and Kharkiv",
+                                                                "Kyiv: I love programming on Java",
+                                                                "Kherson: I love programming on C#",
+                                                                "Frankivs: I'm so strange, I write a code in a notebook and programming on C++",
+                                                                "Kharkiv: I'm a freak. I love tomato juice and programming on C",})));
         Console.WriteLine("Exercise 44: " + String.Join(", ", Ex44(2, 3, new int[] { -5, -1, 1, -2, 2, 5, 4 }, new int[] { -4, -3, 2, 6 })));
         Console.WriteLine("Exercise 45: " + String.Join(", ", Ex45(5, 2, new string[] { "This", "is", "first", "array" }, new string[] {"So", "this", "is", "second", "array"})));
+        Console.WriteLine("Exercise 60: " + String.Join(", ", Ex60(new string[] { "This", "Is", "First", "Array" })));
     }
 
     /* Дана целочисленная последовательность, содержащая как положительные,
@@ -64,6 +74,11 @@ class Program
         }
     }
 
+    /*Дан символ С и строковая последовательность A. Найти
+    количество элементов A, которые содержат более одного символа и при этом
+    начинаются и оканчиваются символом C.*/
+    static int Ex5(char C, string[] A) => A.Where(i => i.Length > 1 && i.First() == C && i.Last() == C).Count();
+
     /* Дана целочисленная последовательность. Извлечь из нее все
     положительные числа, сохранив их исходный порядок следования.*/
     static int[] Ex16(int[] Input) => Input.Where(i => i >= 0).ToArray();
@@ -74,8 +89,14 @@ class Program
     static int[] Ex17(int[] Input) => Input.Where(i => i%2 != 0).Distinct().ToArray();
 
     /*Дана целочисленная последовательность. Извлечь из нее все четные
-    отрицательные числа, поменяв порядок извлеченных чисел на обратный..*/
+    отрицательные числа, поменяв порядок извлеченных чисел на обратный.*/
     static int[] Ex18(int[] Input) => Input.Where(i => i < 0 && i % 2 == 0).Reverse().ToArray();
+
+    /*Дана цифра D (целое однозначное число) и целочисленная последовательность A.
+    Извлечь из A все различные положительные числа, оканчивающиеся цифрой D
+    (в исходном порядке). При наличии повторяющихся элементов удалять все их вхождения,
+    кроме последних.*/
+    static int[] Ex19(int D, int[] A) => A.Where(i => i > 0 && i%10 == D).Distinct().ToArray();
 
     /*Дана последовательность непустых строк A. Получить последовательность
     символов, каждый элемент которой является начальным символом
@@ -93,6 +114,13 @@ class Program
     нечетные числа, получить последовательность их строковых представлений и
     отсортировать ее в лексикографическом порядке по возрастанию.*/
     static string[] Ex34(int[] numbers) => numbers.Where(i => i%2 != 0).Select(i => i.ToString()).OrderDescending().ToArray();
+
+    /*Дана последовательность непустых строк. Получить последовательность символов,
+    которая определяется следующим образом: если соответствующая строка
+    исходной последовательности имеет нечетную длину, то в качестве символа
+    берется первый символ этой строки; в противном случае берется последний символ строки.
+    Отсортировать полученные символы по убыванию их кодов.*/
+    static char[] Ex36(string[] str) => str.Select(i => i.Length % 2 == 0 ? i.Last() : i.First()).Order().ToArray();
 
     /*Даны целые числа K1 и K2 и целочисленные последовательности A и B.
     Получить последовательность, содержащую все числа из A, большие K1,
@@ -119,4 +147,13 @@ class Program
     исходным порядком элементов последовательности A,
     а для равных первых элементов — порядком элементов последовательности B.*/
     //static string[] Ex46(int[] A, int[] B) =>
+
+    /*Дана последовательность непустых строк A, содержащих
+    только заглавные буквы латинского алфавита. Для всех строк,
+    начинающихся с одной и той же буквы, определить их суммарную длину
+    и получить последовательность строк вида «S-C», где S — суммарная длина всех строк
+    из A, которые начинаются с буквы С. Полученную последовательность упорядочить
+    по убыванию числовых значений сумм,
+    а при равных значениях сумм — по возрастанию кодов символов C.*/
+    static string[] Ex60(string[] str) => str.Select(i => i.First().ToString()).ToArray();
 }
