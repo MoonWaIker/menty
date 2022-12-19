@@ -33,7 +33,7 @@ class Program
                                                                 "Kharkiv: I'm a freak. I love tomato juice and programming on C",})));
         Console.WriteLine("Exercise 44: " + String.Join(", ", Ex44(2, 3, new int[] { -5, -1, 1, -2, 2, 5, 4 }, new int[] { -4, -3, 2, 6 })));
         Console.WriteLine("Exercise 45: " + String.Join(", ", Ex45(5, 2, new string[] { "This", "is", "first", "array" }, new string[] {"So", "this", "is", "second", "array"})));
-        Console.WriteLine("Exercise 60: " + String.Join(", ", Ex60(new string[] { "This", "Is", "First", "Array" })));
+        Console.WriteLine("Exercise 60: " + String.Join(", ", Ex60(new string[] { "LA", "LA", "LA", "WAY", "LA", "LA", "LA", "WAY", "LA", "LA", "LA", "HEY", "LA", "LA", "LA", "HEY" })));
     }
 
     /* Дана целочисленная последовательность, содержащая как положительные,
@@ -155,5 +155,5 @@ class Program
     из A, которые начинаются с буквы С. Полученную последовательность упорядочить
     по убыванию числовых значений сумм,
     а при равных значениях сумм — по возрастанию кодов символов C.*/
-    static string[] Ex60(string[] str) => str.Select(i => i.First().ToString()).ToArray();
+    static string[] Ex60(string[] str) => str.Select(i => new {chr = i.First(), Count = str.Sum(j => j.First() == i.First() ? j.Length : 0)}).Distinct().OrderBy(i => i.chr).OrderByDescending(i => i.Count).Select(i => i.Count.ToString() + "-" + i.chr.ToString()).ToArray();
 }
