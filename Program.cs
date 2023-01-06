@@ -1,3 +1,6 @@
+using System.Globalization;
+using System.Linq;
+
 class Program
 {
     static void Main(string[] args)
@@ -34,7 +37,7 @@ class Program
         Console.WriteLine("Exercise 16: " + String.Join(", ", Ex16(new int[] { -1, 2, -3, 4 })));
         Console.WriteLine("Exercise 17: " + String.Join(", ", Ex17(new int[] { -18, -15, -2, -1, 0, 1, 4, 17, 1 })));
         Console.WriteLine("Exercise 18: " + String.Join(", ", Ex18(new int[] { -18, -15, -2, -1, 0, 1, 4, 17, 1 })));
-        Console.WriteLine("Exercise 19: " + String.Join(", ", Ex19(1 , new int[] { -181, -15, -2, -1, 0, 1, 4, 171, 1 })));
+        Console.WriteLine("Exercise 19: " + String.Join(", ", Ex19(1, new int[] { -181, -15, -2, -1, 0, 1, 4, 171, 1 })));
         Console.WriteLine("Exercise 20: " + String.Join(", ", Ex20(new int[] { -18, -15, -2, -1, 0, 404, 1, 4, 17, 1 })));
         Console.WriteLine("Exercise 21: " + String.Join(", ", Ex21(new string[] { "B", "YYY", "AAA", "A", "AA" })));
         Console.WriteLine("Exercise 22: " + String.Join(", ", Ex22(3, new string[] { "B", "YY3", "AA3", "CC0", "A", "AA" })));
@@ -43,10 +46,10 @@ class Program
         Console.WriteLine("Exercise 25: " + Ex25(1, 6, new int[] { 181, 15, 2, 1, 0, 1, 4, 171, 1 }));
         Console.WriteLine("Exercise 26: " + Ex26(1, 3, new string[] { "A", "BC", "DEF", "GHIJ", "KLMNO", "PQRSTU" }));
         Console.WriteLine("Exercise 27: " + String.Join(", ", Ex27(3, new int[] { -18, -15, -2, -1, 0, 2, 1, 404, 17, 5 })));
-        Console.WriteLine("Exercise 28: " + String.Join(", ", Ex28(3, new string[] { "YYY", "A", "B2", "DEF", "GHIJ", "KLMN4", "PQRSTU", "YYYYYY" } )));
+        Console.WriteLine("Exercise 28: " + String.Join(", ", Ex28(3, new string[] { "YYY", "A", "B2", "DEF", "GHIJ", "KLMN4", "PQRSTU", "YYYYYY" })));
         Console.WriteLine("Exercise 29: " + String.Join(", ", Ex29(20, 5, new int[] { 18, 15, 2, 1, 100, 404, 1, 4, 18 })));
         Console.WriteLine("Exercise 30: " + String.Join(", ", Ex30(5, new int[] { 18, 15, 2, 1, 100, 404, 1, 4, 18 })));
-        Console.WriteLine("Exercise 31: " + String.Join(", ", Ex31(5, new string[] { "YYY", "A", "B2", "DEF", "GHIJ", "KLMN4", "PQRSTU", "YYYYYY" } )));
+        Console.WriteLine("Exercise 31: " + String.Join(", ", Ex31(5, new string[] { "YYY", "A", "B2", "DEF", "GHIJ", "KLMN4", "PQRSTU", "YYYYYY" })));
         Console.WriteLine("Exercise 32: " + String.Join(", ", Ex32(new string[] { "abc", "def", "gh" })));
         Console.WriteLine("Exercise 33: " + String.Join(", ", Ex33(new int[] { -18, -1, 0, 1, 4, 17, 1 })));
         Console.WriteLine("Exercise 34: " + String.Join(", ", Ex34(new int[] { 18, 1, 0, 1, 4, 17, 1 })));
@@ -64,10 +67,17 @@ class Program
         Console.WriteLine("Exercise 42: " + String.Join(", ", Ex42(new string[] { "My", "n1ckname", "1s", "M00nWalker" })));
         Console.WriteLine("Exercise 43: " + String.Join(", ", Ex43(2, new string[] { "My", "n1ckname", "1s", "M00nWalker" })));
         Console.WriteLine("Exercise 44: " + String.Join(", ", Ex44(2, 3, new int[] { -5, -1, 1, -2, 2, 5, 4 }, new int[] { -4, -3, 2, 6 })));
-        Console.WriteLine("Exercise 45: " + String.Join(", ", Ex45(5, 2, new string[] { "This", "is", "first", "array" }, new string[] {"So", "this", "is", "second", "array"})));
+        Console.WriteLine("Exercise 45: " + String.Join(", ", Ex45(5, 2, new string[] { "This", "is", "first", "array" }, new string[] { "So", "this", "is", "second", "array" })));
         Console.WriteLine("Exercise 46: " + String.Join(", ", Ex46(new int[] { 18, 45, 129 }, new int[] { 15, 49, 88 })));
         Console.WriteLine("Exercise 47: " + String.Join(", ", Ex47(new int[] { 18, 45, 49 }, new int[] { 51, 921, 88 })));
         Console.WriteLine("Exercise 48: " + String.Join(", ", Ex48(new string[] { "AAA", "A", "AA" }, new string[] { "YYY", "B2", "C" })));
+        Console.WriteLine("Exercise 49: " + String.Join(", ", Ex49(new string[] { "ALPHA", "B", "ALPHA" }, new string[] { "A", "B2", "ABC" }, new string[] { "BMW", "AUDI", "A3" })));
+        Console.WriteLine("Exercise 50: " + String.Join(", ", Ex50(new string[] { "This", "is", "first", "array" }, new string[] { "So", "This", "is", "second", "array" })));
+        Console.WriteLine("Exercise 51: " + String.Join(", ", Ex51(new int[] { 1, 2, 3, 4 }, new int[] { 51, 11, 6, 3, 44 })));
+        Console.WriteLine("Exercise 52: " + String.Join(", ", Ex52(new string[] { "Thi5", "i5", "firs1", "array" }, new string[] { "S0", "Thi5", "i5", "second", "array" })));
+        Console.WriteLine("Exercise 53: " + String.Join(", ", Ex53(new int[] { 1, 2, 3, 4 }, new int[] { 5, 6, 7, 8 })));
+        Console.WriteLine("Exercise 54: " + String.Join(", ", Ex54(new string[] { "MSB", "B2", "A" }, new string[] { "BMW", "A3", "C" })));
+        Console.WriteLine("Exercise 55: " + String.Join(", ", Ex55(new int[] { 19, 41, 41 }, new int[] { 1, 39, 23 })));
         Console.WriteLine("Exercise 56: " + String.Join(", ", Ex56(new int[] { -18, -15, -1, 405, 1, 8 })));
         Console.WriteLine("Exercise 57: " + String.Join(", ", Ex57(new int[] { -18, -15, -1, 405, 1, 8 })));
         Console.WriteLine("Exercise 58: " + String.Join(", ", Ex58(new string[] { "THIS", "IS", "ARRAY", "OR", "THEY'RE", "ARRAYS" })));
@@ -90,7 +100,7 @@ class Program
     последовательность A. Вывести первый положительный элемент
     последовательности A, оканчивающийся цифрой D. Если требуемых элементов
     в последовательности A нет, то вывести 0.*/
-    static int Ex2(int D, int[] A) => A.FirstOrDefault(i => i >= 0 && i%10 == D,0);
+    static int Ex2(int D, int[] A) => A.FirstOrDefault(i => i >= 0 && i % 10 == D, 0);
 
     /*Дано целое число L (> 0) и строковая последовательность A. Вывести
     последнюю строку из A, начинающуюся с цифры и имеющую длину L. Если
@@ -168,7 +178,7 @@ class Program
 
     /*Дано целое число N (> 0).
     Используя методы Range и Sum, найти сумму 1 + (1/2) + … + (1/N) (как вещественное число).*/
-    static double Ex13(int N) => Enumerable.Range(1, N).Sum(i => (double)1/i);
+    static double Ex13(int N) => Enumerable.Range(1, N).Sum(i => (double)1 / i);
 
     /*Даны целые числа A и B (A < B). Используя методы Range и Average,
     найти среднее арифметическое квадратов всех целых чисел от A до B включительно:
@@ -187,7 +197,7 @@ class Program
     /*Дана целочисленная последовательность. Извлечь из нее все нечетные числа,
     сохранив их исходный порядок следования и удалив все вхождения
     повторяющихся элементов, кроме первых.*/
-    static int[] Ex17(int[] Input) => Input.Where(i => i%2 != 0).Distinct().ToArray();
+    static int[] Ex17(int[] Input) => Input.Where(i => i % 2 != 0).Distinct().ToArray();
 
     /*Дана целочисленная последовательность. Извлечь из нее все четные
     отрицательные числа, поменяв порядок извлеченных чисел на обратный.*/
@@ -197,7 +207,7 @@ class Program
     Извлечь из A все различные положительные числа, оканчивающиеся цифрой D
     (в исходном порядке). При наличии повторяющихся элементов удалять все их вхождения,
     кроме последних.*/
-    static int[] Ex19(int D, int[] A) => A.Where(i => i > 0 && i%10 == D).Distinct().ToArray();
+    static int[] Ex19(int D, int[] A) => A.Where(i => i > 0 && i % 10 == D).Distinct().ToArray();
 
     /*Дана целочисленная последовательность. Извлечь из нее все
     положительные двузначные числа, отсортировав их по возрастанию.*/
@@ -218,7 +228,7 @@ class Program
     /* Дано целое число K (> 0) и целочисленная последовательность A.
     Начиная с элемента A с порядковым номером K, извлечь из A все
     нечетные двузначные числа, отсортировав их по убыванию.*/
-    static int[] Ex23(int K, int[] A) => A.Skip(K).Where(i => i%2 != 0 && i < 100).OrderDescending().ToArray();
+    static int[] Ex23(int K, int[] A) => A.Skip(K).Where(i => i % 2 != 0 && i < 100).OrderDescending().ToArray();
 
     /*Дано целое число K (> 0) и строковая последовательность A.
     Из элементов A, предшествующих элементу с порядковым номером K,
@@ -276,12 +286,12 @@ class Program
     числа, получить последовательность их последних цифр и удалить в полученной
     последовательности все вхождения одинаковых цифр, кроме первого. Порядок
     полученных цифр должен соответствовать порядку исходных чисел.*/
-    static int[] Ex33(int[] numbers) => numbers.Where(i => i >= 0).Select(i => i%10).Distinct().ToArray();
+    static int[] Ex33(int[] numbers) => numbers.Where(i => i >= 0).Select(i => i % 10).Distinct().ToArray();
 
     /*Дана последовательность положительных целых чисел. Обрабатывая только
     нечетные числа, получить последовательность их строковых представлений и
     отсортировать ее в лексикографическом порядке по возрастанию.*/
-    static string[] Ex34(int[] numbers) => numbers.Where(i => i%2 != 0).Select(i => i.ToString()).OrderDescending().ToArray();
+    static string[] Ex34(int[] numbers) => numbers.Where(i => i % 2 != 0).Select(i => i.ToString()).OrderDescending().ToArray();
 
     /*Дана целочисленная последовательность. Получить последовательность чисел,
     каждый элемент которой равен произведению соответствующего элемента
@@ -330,7 +340,7 @@ class Program
     static char[] Ex40(int K, string[] A)
     {
         char[] result = A.Where(i => i.Length >= K).First().ToCharArray();
-        foreach(string element in A.Where(i => i.Length >= K))
+        foreach (string element in A.Where(i => i.Length >= K))
             result = result.Intersect(element.ToCharArray()).ToArray();
         return result;
     }
@@ -378,7 +388,7 @@ class Program
     «49-129». Порядок следования пар должен определяться
     исходным порядком элементов последовательности A,
     а для равных первых элементов — порядком элементов последовательности B.*/
-    static string[] Ex46(int[] A, int[] B) => A.Join(B, i => i%10, j => j%10, (i, j) => new {num1 = i, num2 = j}).Select(i => i.num1 + "-" + i.num2).ToArray();
+    static string[] Ex46(int[] A, int[] B) => A.Join(B, i => i % 10, j => j % 10, (i, j) => new { num1 = i, num2 = j }).Select(i => i.num1 + "-" + i.num2).ToArray();
 
     /*Даны последовательности положительных целых чисел A и B; все числа в каждой последовательности различны.
     Найти внутреннее объединение A и B (см. LinqBegin46), пары в котором должны удовлетворять следующему условию:
@@ -395,7 +405,36 @@ class Program
      в виде последовательности строк, содержащих первый и второй элементы пары, разделенные двоеточием, например, «AB:CD».
      Порядок следования пар должен определяться лексикографическим порядком первых элементов пар (по возрастанию),
      а для равных первых элементов — лексикографическим порядком вторых элементов пар (по убыванию).*/
-    static string[] Ex48(string[] A, string[] B) => A.Join(B, i => i.Length, j => j.Length, (i, j) => new { num1 = i, num2 = j }).OrderDescending().Order().Select(i => i.num1 + ":" + i.num2).ToArray();
+    static string[] Ex48(string[] A, string[] B) => A.Join(B, i => i.Length, j => j.Length, (i, j) => new { str1 = i, str2 = j }).OrderByDescending(i => i.str2).OrderBy(i => i.str1).Select(i => i.str1 + ":" + i.str2).ToArray();
+
+    /* Даны строковые последовательности A, B и С; все строки в каждой последовательности различны, имеют ненулевую длину и содержат только цифры и 
+     * заглавные буквы латинского алфавита. Найти внутреннее объединение A, B и С (см. LinqBegin46), каждая тройка которого должна содержать строки, начинающиеся с одного и того же 
+     * символа. Представить найденное объединение в виде последовательности строк вида «EA=EB=EC», где EA, EB, EC — элементы из A, B, C соответственно. 
+     * Для различных элементов EA сохраняется исходный порядок их следования, для равных элементов EA порядок троек определяется лексикографическим порядком элементов EB 
+     * (по возрастанию), а для равных элементов EA и EB — лексикографическим порядком элементов EC (по убыванию).*/
+    // Is it correct?
+    static string[] Ex49(string[] A, string[] B, string[] C) => A.Join(B.Join(C, i => i.First(), j => j.First(), (i, j) => new { str2 = i, str3 = j }).OrderByDescending(i => i.str3).OrderBy(i => i.str2), i => i.First(), j => j.str2.First(), (i, j) => new { str1 = i, str2 = j.str2, str3 = j.str3 }).Distinct().Select(i => i.str1 + "=" + i.str2 + "=" + i.str3).ToArray();
+
+    /*Даны строковые последовательности A и B; все строки в каждой последовательности различны и имеют ненулевую длину. Получить последовательность строк вида «E:N», 
+     * где E обозначает один из элементов последовательности A, а N — количество элементов из B, начинающихся с того же символа, что и элемент E (например, «abc:4»); 
+     * количество N может быть равно 0. Порядок элементов полученной последовательности должен определяться исходным порядком элементов последовательности A.*/
+    static string[] Ex50(string[] A, string[] B) => A.GroupJoin(B, i => i.First(), j => j.First(), (i, j) => new { str = i, collection = j }).Select(i => i.str + "." + i.collection.Count()).ToArray();
+
+    /*Даны последовательности положительных целых чисел A и B; все числа в последовательности A различны. Получить последовательность строк вида «S:E», 
+     * где S обозначает сумму тех чисел из B, которые оканчиваются на ту же цифру, что и число E — один из элементов последовательности A (например, «74:23»); 
+     * если для числа E не найдено ни одного подходящего числа из последовательности B, то в качестве S указать 0. Расположить элементы полученной последовательности 
+     * по возрастанию значений найденных сумм, а при равных суммах — по убыванию значений элементов A.*/
+    static string[] Ex51(int[] A, int[] B) => A.GroupJoin(B, i => i % 10, j => j % 10, (i, j) => new { number = i, collection = j }).OrderByDescending(i => i.number).OrderBy(i => i.collection.Sum()).Select(i => i.collection.Sum() + "." + i.number).ToArray();
+
+    /*Даны строковые последовательности A и B; все строки в каждой последовательности различны, имеют ненулевую длину и содержат только цифры и заглавные буквы латинского алфавита. 
+     * Получить последовательность всевозможных комбинаций вида «EA=EB», где EA — некоторый элемент из A, EB — некоторый элемент из B, 
+     * причем оба элемента оканчиваются цифрой (например, «AF3=D78»). Упорядочить полученную последовательность в лексикографическом порядке по возрастанию элементов EA, 
+     * а при одинаковых элементах EA — в лексикографическом порядке по убыванию элементов EB.*/
+    static string[] Ex52(string[] A, string[] B) => A.Where(i => Char.IsDigit(i.Last())).Join(B.Where(i => Char.IsDigit(i.Last())), i => true, j => true, (i, j) => new { str1 = i, str2 = j }).Select(i => i.str1 + "=" + i.str2).ToArray();
+
+    /*Даны целочисленные последовательности A и B. Получить последовательность всех различных сумм, в которых первое слагаемое берется из A, а второе из B. 
+     * Упорядочить полученную последовательность по возрастанию.*/
+    static int[] Ex53(int[] A, int[] B) => A.Join(B, i => true, j => true, (i, j) => i + j).ToArray();
 
     /*Даны строковые последовательности A и B;
     все строки в каждой последовательности различны, имеют ненулевую длину и содержат только цифры
@@ -408,7 +447,15 @@ class Program
     где EA — элемент из A, а EB — либо один из соответствующих ему элементов из B, либо пустая строка.
     Расположить элементы полученной строковой последовательности в лексикографическом порядке по возрастанию.
     Указание. Использовать методы GroupJoin, DefaultIfEmpty, Select и SelectMany.*/
-    //static string[] Ex54(string[] A, string[] B) =>
+    static string[] Ex54(string[] A, string[] B) => A.GroupJoin(B, i => i.First(), j => j.First(), (i, j) => new { first = i, second = j.DefaultIfEmpty("") }).OrderBy(i => i.first).SelectMany(i => i.second.Select(j => i.first + "." + j)).ToArray();
+
+    /*Даны последовательности положительных целых чисел A и B; все числа в каждой последовательности различны. Найти левое внешнее объединение A и B (см. LinqBegin54), 
+     * пары в котором должны удовлетворять следующему условию: оба элемента пары оканчиваются одной и той же цифрой. 
+     * Представить найденное объединение в виде последовательности строк вида «EA:EB», где EA — число из A, а EB — либо одно из соответствующих ему чисел из B, 
+     * либо 0 (если в B не содержится чисел, соответствующих EA). Расположить элементы полученной последовательности по убыванию чисел EA, 
+     * а при одинаковых числах EA — по возрастанию чисел EB.*/
+    // M - m - m...
+    static string[] Ex55(int[] A, int[] B) => A.GroupJoin(B, i => i % 10, j => j % 10, (i, j) => new { first = i, second = j.DefaultIfEmpty(0) }).OrderByDescending(i => i.first).SelectMany(i => i.second.Select(j => i.first + "." + j)).ToArray();
 
     /*Дана целочисленная последовательность A. Сгруппировать элементы последовательности A,
     оканчивающиеся одной и той же цифрой, и на основе этой группировки получить последовательность строк вида «D:S»,
@@ -438,5 +485,5 @@ class Program
     из A, которые начинаются с буквы С. Полученную последовательность упорядочить
     по убыванию числовых значений сумм,
     а при равных значениях сумм — по возрастанию кодов символов C.*/
-    static string[] Ex60(string[] str) => str.Select(i => new {chr = i.First(), Count = str.Sum(j => j.First() == i.First() ? j.Length : 0)}).Distinct().OrderBy(i => i.chr).OrderByDescending(i => i.Count).Select(i => i.Count.ToString() + "-" + i.chr.ToString()).ToArray();
+    static string[] Ex60(string[] str) => str.Select(i => new { chr = i.First(), Count = str.Sum(j => j.First() == i.First() ? j.Length : 0) }).Distinct().OrderBy(i => i.chr).OrderByDescending(i => i.Count).Select(i => i.Count.ToString() + "-" + i.chr.ToString()).ToArray();
 }
